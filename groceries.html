@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MaliBudget | Groceries</title>
+  <link rel="stylesheet" href="style.css">
+ <script type="module" src="script.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="index.html"><span>🌱</span> MaliBudget</a>
+    <p class="nav-label">MENU</p>
+    <nav>
+      <a class="nav-link" href="index.html">▦ <span>Overview</span></a>
+      <a class="nav-link" href="budget.html">◷ <span>Budget planner</span></a>
+      <a class="nav-link active" href="groceries.html">🛒 <span>Groceries</span></a>
+      <a class="nav-link" href="expenses.html">🧾 <span>Expenses</span></a>
+    </nav>
+    <div class="sidebar-note"><span>💚</span><strong>Shop with a plan.</strong><p>Know your estimated total before shopping.</p></div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">PLAN BEFORE YOU SHOP</p>
+        <h1>Grocery list</h1>
+        <p class="muted">Build your list and estimate your shopping total.</p>
+      </div>
+    </header>
+
+    <section class="page-intro">
+      <span class="intro-icon">🛒</span>
+      <div>
+        <h2>What does your household need?</h2>
+        <p>Add the items you want to buy and their prices.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <form id="grocery-form">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="grocery-item">Item name</label>
+            <input id="grocery-item" type="text" maxlength="100" placeholder="e.g. Maize meal" required>
+          </div>
+          <div class="form-field">
+            <label for="grocery-quantity">Quantity</label>
+            <input id="grocery-quantity" type="number" min="1" max="999" step="1" value="1" required>
+          </div>
+          <div class="form-field">
+            <label for="grocery-price">Price per item (R)</label>
+            <input id="grocery-price" type="number" min="0" step="0.01" placeholder="e.g. 65" required>
+          </div>
+        </div>
+        <p id="grocery-error" class="form-error" role="alert" hidden></p>
+        <button class="button primary" type="submit">+ Add grocery item</button>
+      </form>
+    </section>
+
+    <section class="panel list-panel">
+      <div class="section-title">
+        <div>
+          <h2>My shopping list</h2>
+          <p class="muted">Your list is saved in this browser.</p>
+        </div>
+        <div class="total-box">
+          <span>Estimated total</span>
+          <strong id="grocery-total">R0.00</strong>
+        </div>
+      </div>
+      <div id="grocery-list" class="item-list">
+        <p class="empty-message">Your grocery list is empty. Add your first item above.</p>
+      </div>
+    </section>
+
+    <footer class="footer">MaliBudget · Plan your shopping with confidence.</footer>
+  </main>
+</body>
+</html>

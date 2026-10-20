@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sign in or create your MaliBudget account.">
+  <title>MaliBudget | Login</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 16px;
+      background: #fbfaf4;
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 440px;
+      padding: 32px;
+      background: white;
+      border: 1px solid #e7eee8;
+      border-radius: 18px;
+      box-shadow: 0 12px 35px rgba(6, 75, 55, 0.08);
+    }
+
+    .auth-brand {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .auth-brand h1 {
+      color: #087b50;
+      margin-bottom: 8px;
+    }
+
+    .auth-brand p {
+      color: #647067;
+      margin: 0;
+    }
+
+    .auth-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .auth-tabs button {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #dce8df;
+      border-radius: 9px;
+      background: #f5f8f5;
+      color: #064b37;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .auth-tabs button.active {
+      background: #087b50;
+      color: white;
+      border-color: #087b50;
+    }
+
+    .auth-form label {
+      display: block;
+      margin: 16px 0 7px;
+      font-weight: 600;
+      color: #263c31;
+    }
+
+    .auth-form input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d4dfd7;
+      border-radius: 9px;
+      font: inherit;
+      box-sizing: border-box;
+    }
+
+    .auth-form input:focus {
+      outline: 2px solid #a5d8bd;
+      border-color: #087b50;
+    }
+
+    .auth-submit {
+      width: 100%;
+      margin-top: 24px;
+      padding: 13px;
+      border: none;
+      border-radius: 9px;
+      background: #087b50;
+      color: white;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .auth-submit:hover {
+      background: #064b37;
+    }
+
+    .auth-message {
+      margin-top: 16px;
+      color: #064b37;
+      overflow-wrap: anywhere;
+    }
+
+    .auth-back {
+      display: block;
+      margin-top: 24px;
+      text-align: center;
+      color: #087b50;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="auth-page">
+    <section class="auth-card">
+      <div class="auth-brand">
+        <h1>🌱 MaliBudget</h1>
+        <p>Make your money last until payday.</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button type="button" id="show-login" class="active">
+          Sign in
+        </button>
+        <button type="button" id="show-register">
+          Create account
+        </button>
+      </div>
+
+      <form id="login-form" class="auth-form">
+        <h2>Welcome back!</h2>
+        <p>Sign in to access your budget.</p>
+
+        <label for="login-email">Email address</label>
+        <input
+          type="email"
+          id="login-email"
+          autocomplete="email"
+          required
+        >
+
+        <label for="login-password">Password</label>
+        <input
+          type="password"
+          id="login-password"
+          autocomplete="current-password"
+          required
+        >
+
+        <button type="submit" class="auth-submit">
+          Sign in
+        </button>
+      </form>
+
+      <form id="register-form" class="auth-form" hidden>
+        <h2>Create your account</h2>
+        <p>Start managing your money with confidence.</p>
+
+        <label for="register-name">Your name</label>
+        <input
+          type="text"
+          id="register-name"
+          autocomplete="name"
+          required
+        >
+
+        <label for="register-email">Email address</label>
+        <input
+          type="email"
+          id="register-email"
+          autocomplete="email"
+          required
+        >
+
+        <label for="register-password">Create a password</label>
+        <input
+          type="password"
+          id="register-password"
+          autocomplete="new-password"
+          minlength="6"
+          required
+        >
+
+        <button type="submit" class="auth-submit">
+          Create account
+        </button>
+      </form>
+
+      <p id="auth-message" class="auth-message" role="status" aria-live="polite"></p>
+
+      <a class="auth-back" href="index.html">
+        Back to MaliBudget overview
+      </a>
+    </section>
+  </main>
+
+ 
+<script type="module">
+  import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    updateProfile
+  } from
+    "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAfbeoUjxIe2jJLf89BwPmdJVfqD2jh_QI",
+    authDomain: "malibudget.firebaseapp.com",
+    projectId: "malibudget",
+    storageBucket: "malibudget.firebasestorage.app",
+    messagingSenderId: "828431083173",
+    appId: "1:828431083173:web:4dd6ed306e80b1b4560f4c",
+    measurementId: "G-RW6FQ8VDGX"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Get the HTML elements
+  const loginForm = document.getElementById("login-form");
+  const registerForm = document.getElementById("register-form");
+  const showLogin = document.getElementById("show-login");
+  const showRegister = document.getElementById("show-register");
+  const authMessage = document.getElementById("auth-message");
+
+  // Switch to the Sign in form
+  showLogin.addEventListener("click", () => {
+    loginForm.hidden = false;
+    registerForm.hidden = true;
+
+    showLogin.classList.add("active");
+    showRegister.classList.remove("active");
+
+    authMessage.textContent = "";
+  });
+
+  // Switch to the Create account form
+  showRegister.addEventListener("click", () => {
+    loginForm.hidden = true;
+    registerForm.hidden = false;
+
+    showRegister.classList.add("active");
+    showLogin.classList.remove("active");
+
+    authMessage.textContent = "";
+  });
+
+  // Register a new user
+  registerForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById("register-name").value.trim();
+    const email = document.getElementById("register-email").value.trim();
+    const password = document.getElementById("register-password").value;
+
+    if (!name) {
+      authMessage.textContent = "Please enter your name.";
+      return;
+    }
+
+    authMessage.textContent = "Creating your account...";
+
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      await updateProfile(result.user, {
+        displayName: name
+      });
+
+      authMessage.textContent = "Account created successfully!";
+      window.location.href = "index.html";
+    } catch (error) {
+      console.error("Registration error:", error);
+      authMessage.textContent = getFriendlyError(error.code);
+    }
+  });
+
+  // Sign in an existing user
+  loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const email = document.getElementById("login-email").value.trim();
+    const password = document.getElementById("login-password").value;
+
+    authMessage.textContent = "Signing in...";
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+
+      authMessage.textContent = "Login successful!";
+      window.location.href = "index.html";
+    } catch (error) {
+      console.error("Login error:", error);
+      authMessage.textContent = getFriendlyError(error.code);
+    }
+  });
+
+  // Display understandable error messages
+  function getFriendlyError(code) {
+    const messages = {
+      "auth/email-already-in-use":
+        "This email already has an account. Please sign in.",
+      "auth/invalid-email":
+        "Please enter a valid email address.",
+      "auth/weak-password":
+        "Your password is too weak. Please choose a stronger one.",
+      "auth/invalid-credential":
+        "Email or password is incorrect. Please try again.",
+      "auth/network-request-failed":
+        "Network problem. Check your internet connection.",
+      "auth/too-many-requests":
+        "Too many attempts. Please wait and try again.",
+      "auth/operation-not-allowed":
+        "Email and password sign-in is not enabled in Firebase."
+    };
+
+    return messages[code] ||
+      "Something went wrong. Press F12 and check the Console for details.";
+  }
+</script>
+
+</body>
+</html>
