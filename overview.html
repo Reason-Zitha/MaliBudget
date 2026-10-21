@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your simple household budgeting dashboard.">
+  <title>MaliBudget | Overview</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="script.js"></script>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="landing.html">
+      <i data-lucide="sprout" class="brand-icon" aria-hidden="true"></i>
+      MaliBudget
+    </a>
+
+    <p class="nav-label">MENU</p>
+
+    <nav>
+      <a class="nav-link active" href="section-block">
+        <i data-lucide="layout-dashboard" class="site-icon" aria-hidden="true"></i>
+        <span>Overview</span>
+      </a>
+      <a class="nav-link" href="budget.html">
+        <i data-lucide="wallet" class="site-icon" aria-hidden="true"></i>
+        <span>Budget planner</span>
+      </a>
+      <a class="nav-link" href="groceries.html">
+        <i data-lucide="shopping-cart" class="site-icon" aria-hidden="true"></i>
+        <span>Groceries</span>
+      </a>
+      <a class="nav-link" href="expenses.html">
+        <i data-lucide="receipt" class="site-icon" aria-hidden="true"></i>
+        <span>Expenses</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-note">
+      <i data-lucide="heart-handshake" class="site-icon" aria-hidden="true"></i>
+      <strong>Small steps matter.</strong>
+      <p>Every rand deserves a plan.</p>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">YOUR MONEY, YOUR PLAN</p>
+        <h1>Overview</h1>
+        <p class="muted">Welcome to your personal money dashboard.</p>
+      </div>
+
+      <div class="header-actions">
+        <a class="button primary" href="budget.html">
+          <i data-lucide="plus" class="button-icon" aria-hidden="true"></i>
+          Plan my budget
+        </a>
+        <button type="button" class="button primary" id="logout-button">
+          Log out
+        </button>
+      </div>
+    </header>
+
+    <section class="welcome-card">
+      <div>
+        <p class="eyebrow light">A FRESH START</p>
+        <h2>Make your money work for you.</h2>
+        <p>See your budget clearly, plan your shopping and keep track of spending.</p>
+        <a class="button white-button" href="budget.html">
+          Start planning
+          <i data-lucide="arrow-right" class="button-icon" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="welcome-illustration" aria-hidden="true">
+        <i data-lucide="sprout"></i>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-title">
+        <div>
+          <h2>Your financial summary</h2>
+          <p class="muted">Based on your saved budget and recorded expenses.</p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span class="stat-icon"><i data-lucide="wallet" class="site-icon" aria-hidden="true"></i></span>
+          <p class="muted">Monthly income</p>
+          <h3 id="dashboard-income">R0.00</h3>
+          <span class="stat-foot">Your planned income</span>
+        </article>
+
+        <article class="stat-card">
+          <span class="stat-icon"><i data-lucide="receipt" class="site-icon" aria-hidden="true"></i></span>
+          <p class="muted">Bills</p>
+          <h3 id="dashboard-bills">R0.00</h3>
+          <span class="stat-foot">Planned essentials</span>
+        </article>
+
+        <article class="stat-card">
+          <span class="stat-icon"><i data-lucide="shopping-cart" class="site-icon" aria-hidden="true"></i></span>
+          <p class="muted">Groceries</p>
+          <h3 id="dashboard-groceries">R0.00</h3>
+          <span class="stat-foot">Planned grocery budget</span>
+        </article>
+
+        <article class="stat-card highlight-card">
+          <span class="stat-icon"><i data-lucide="leaf" class="site-icon" aria-hidden="true"></i></span>
+          <p class="muted">Left to plan</p>
+          <h3 id="dashboard-remaining">R0.00</h3>
+          <span class="stat-foot">After planned costs and savings</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel">
+        <div class="section-title">
+          <div>
+            <h2>Spending overview</h2>
+            <p class="muted">Your recorded expenses compared with income.</p>
+          </div>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="spending-progress-fill"></div>
+        </div>
+
+        <div class="progress-labels">
+          <span id="overview-spent">R0.00 spent</span>
+          <span id="overview-percent">0%</span>
+        </div>
+
+        <p class="muted small" id="overview-message">
+          Create a budget to get started.
+        </p>
+      </article>
+
+      <article class="panel">
+        <h2>Quick actions</h2>
+        <p class="muted">What would you like to do today?</p>
+
+        <a class="action-link" href="budget.html">
+          <i data-lucide="wallet" class="site-icon" aria-hidden="true"></i>
+          <span>
+            <strong>Plan my budget</strong>
+            <small>Calculate weekly spending money</small>
+          </span>
+          <i data-lucide="arrow-right" class="site-icon action-arrow" aria-hidden="true"></i>
+        </a>
+
+        <a class="action-link" href="groceries.html">
+          <i data-lucide="shopping-cart" class="site-icon" aria-hidden="true"></i>
+          <span>
+            <strong>Build a grocery list</strong>
+            <small>Estimate your shopping total</small>
+          </span>
+          <i data-lucide="arrow-right" class="site-icon action-arrow" aria-hidden="true"></i>
+        </a>
+
+        <a class="action-link" href="expenses.html">
+          <i data-lucide="receipt" class="site-icon" aria-hidden="true"></i>
+          <span>
+            <strong>Record an expense</strong>
+            <small>Keep track of what you spend</small>
+          </span>
+          <i data-lucide="arrow-right" class="site-icon action-arrow" aria-hidden="true"></i>
+        </a>
+      </article>
+    </section>
+
+    <footer class="footer">
+      MaliBudget · Simple planning for everyday life.
+    </footer>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <script type="module">
+    import { auth } from "./firebase.js";
+    import { onAuthStateChanged, signOut } from
+      "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
+
+    const logoutButton = document.getElementById("logout-button");
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.replace("login.html");
+      }
+    });
+
+    logoutButton.addEventListener("click", async () => {
+      logoutButton.disabled = true;
+      logoutButton.textContent = "Signing out...";
+
+      try {
+        await signOut(auth);
+        window.location.replace("login.html");
+      } catch (error) {
+        console.error("Could not sign out:", error);
+        logoutButton.disabled = false;
+        logoutButton.textContent = "Log out";
+        alert("Could not log out. Please try again.");
+      }
+    });
+  </script>
+
+  <script type="module">
+    import { auth, db } from "./firebase.js";
+    import { onAuthStateChanged } from
+      "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
+    import {
+      doc,
+      setDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) return;
+
+      try {
+        await setDoc(
+          doc(db, "users", user.uid, "tests", "connection"),
+          {
+            message: "MaliBudget Firestore connection successful",
+            createdAt: serverTimestamp()
+          }
+        );
+        console.log("Firestore write test successful!");
+      } catch (error) {
+        console.error("Firestore write test failed:", error);
+      }
+    });
+  </script>
+</body>
+</html>
+
+

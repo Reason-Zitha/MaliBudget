@@ -109,6 +109,37 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .footer-inner > p { margin: 0; color: #c2d8ca; font-size: 13px; }
 .footer-links { display: flex; gap: 20px; font-size: 12px; }
 .footer-inner > small { grid-column: 1 / -1; padding-top: 17px; border-top: 1px solid rgba(255,255,255,.15); color: #b6cec0; font-size: 11px; }
+
+/* MaliBudget logo */
+.site-header .brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.site-header .brand-logo {
+  display: block;
+  width: auto;
+  height: 48px;
+  max-width: 200px;
+  object-fit: contain;
+}
+
+.footer-brand .brand-logo {
+  display: block;
+  width: auto;
+  height: 42px;
+  max-width: 190px;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .site-header .brand-logo {
+    height: 40px;
+    max-width: 165px;
+  }
+}
+
 @media (max-width: 900px) {
   .main-nav { gap: 16px; }
   .hero { gap: 35px; padding-top: 58px; }
