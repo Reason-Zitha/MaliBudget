@@ -189,7 +189,7 @@
       <p id="auth-message" class="auth-message"
          role="status" aria-live="polite"></p>
 
-      <a class="auth-back" href="landing.html">
+      <a class="auth-back" href="index.html">
         Back to the landing page
       </a>
     </section>
@@ -271,7 +271,7 @@
 
         await updateProfile(result.user, { displayName: name });
 
-        window.location.href = "index.html";
+        window.location.href = "landing.html";
       } catch (error) {
         console.error("Registration error:", error);
         authMessage.textContent = getFriendlyError(error.code);
@@ -288,7 +288,7 @@
 
       try {
         await signInWithEmailAndPassword(auth, email, password);
-        window.location.href = "index.html";
+        window.location.href = "landing.html";
       } catch (error) {
         console.error("Login error:", error);
         authMessage.textContent = getFriendlyError(error.code);

@@ -1,245 +1,147 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Your simple household budgeting dashboard.">
-  <title>MaliBudget | Overview</title>
-  <link rel="stylesheet" href="style.css">
-  <script type="module" src="script.js"></script>
+  <meta name="description" content="MaliBudget helps South African households plan their money, manage everyday expenses and make their money last until payday.">
+  <title>MaliBudget | Make your money last</title>
+  <link rel="stylesheet" href="landing.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
-  <aside class="sidebar">
-    <a class="brand" href="index.html">
-      <i data-lucide="sprout" class="brand-icon" aria-hidden="true"></i>
-      MaliBudget
+  <header class="site-header">
+    <a class="brand" href="landing.html" aria-label="MaliBudget home">
+      <i data-lucide="sprout" class="brand-icon"></i><span>MaliBudget</span>
     </a>
-
-    <p class="nav-label">MENU</p>
-
-    <nav>
-      <a class="nav-link active" href="index.html">
-        <i data-lucide="layout-dashboard" class="site-icon" aria-hidden="true"></i>
-        <span>Overview</span>
-      </a>
-      <a class="nav-link" href="budget.html">
-        <i data-lucide="wallet" class="site-icon" aria-hidden="true"></i>
-        <span>Budget planner</span>
-      </a>
-      <a class="nav-link" href="groceries.html">
-        <i data-lucide="shopping-cart" class="site-icon" aria-hidden="true"></i>
-        <span>Groceries</span>
-      </a>
-      <a class="nav-link" href="expenses.html">
-        <i data-lucide="receipt" class="site-icon" aria-hidden="true"></i>
-        <span>Expenses</span>
-      </a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+      <i data-lucide="menu"></i>
+    </button>
+    <nav class="main-nav" id="main-nav">
+      <a href="#how-it-works">How it works</a>
+      <a href="#about">About</a>
+      <a href="#feedback">Feedback</a>
+      <a class="nav-login" href="login.html">Log in</a>
+      <a class="button button-primary" href="login.html">Get started <i data-lucide="arrow-up-right"></i></a>
     </nav>
+  </header>
 
-    <div class="sidebar-note">
-      <i data-lucide="heart-handshake" class="site-icon" aria-hidden="true"></i>
-      <strong>Small steps matter.</strong>
-      <p>Every rand deserves a plan.</p>
-    </div>
-  </aside>
-
-  <main class="main-content">
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">YOUR MONEY, YOUR PLAN</p>
-        <h1>Overview</h1>
-        <p class="muted">Welcome to your personal money dashboard.</p>
+  <main>
+    <section class="hero section-wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><i data-lucide="leaf"></i> A simpler way to plan your money</p>
+        <h1>Make your money last <span>until payday.</span></h1>
+        <p class="hero-description">Every rand deserves a plan. MaliBudget helps you see what comes in, plan for bills, manage everyday spending and make a practical grocery budget.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="login.html">Start planning <i data-lucide="arrow-right"></i></a>
+          <a class="button button-secondary" href="#how-it-works">See how it works</a>
+        </div>
+        <div class="trust-line"><i data-lucide="shield-check"></i><span>A clear plan for real-life household needs.</span></div>
       </div>
-
-      <div class="header-actions">
-        <a class="button primary" href="budget.html">
-          <i data-lucide="plus" class="button-icon" aria-hidden="true"></i>
-          Plan my budget
-        </a>
-        <button type="button" class="button primary" id="logout-button">
-          Log out
-        </button>
-      </div>
-    </header>
-
-    <section class="welcome-card">
-      <div>
-        <p class="eyebrow light">A FRESH START</p>
-        <h2>Make your money work for you.</h2>
-        <p>See your budget clearly, plan your shopping and keep track of spending.</p>
-        <a class="button white-button" href="budget.html">
-          Start planning
-          <i data-lucide="arrow-right" class="button-icon" aria-hidden="true"></i>
-        </a>
-      </div>
-
-      <div class="welcome-illustration" aria-hidden="true">
-        <i data-lucide="sprout"></i>
+      <div class="hero-visual">
+        <img class="hero-photo" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=85" alt="Person reviewing household finances and paperwork at a table">
+        <div class="floating-card budget-card">
+          <span class="floating-icon"><i data-lucide="wallet"></i></span>
+          <div><small>Plan with purpose</small><strong>Know what you can spend</strong></div>
+        </div>
+        <div class="floating-card check-card">
+          <i data-lucide="check-circle-2"></i><span>One step at a time</span>
+        </div>
       </div>
     </section>
 
-    <section class="section-block">
-      <div class="section-title">
-        <div>
-          <h2>Your financial summary</h2>
-          <p class="muted">Based on your saved budget and recorded expenses.</p>
-        </div>
+    <section class="problem-strip">
+      <div class="section-wrap problem-inner">
+        <div><span class="problem-number">01</span><strong>Know your income</strong><p>Start with the money you have available.</p></div>
+        <div><span class="problem-number">02</span><strong>Plan essential bills</strong><p>Make room for the expenses that matter.</p></div>
+        <div><span class="problem-number">03</span><strong>Spend with clarity</strong><p>Set a realistic limit for everyday needs.</p></div>
       </div>
+    </section>
 
-      <div class="stats-grid">
-        <article class="stat-card">
-          <span class="stat-icon"><i data-lucide="wallet" class="site-icon" aria-hidden="true"></i></span>
-          <p class="muted">Monthly income</p>
-          <h3 id="dashboard-income">R0.00</h3>
-          <span class="stat-foot">Your planned income</span>
+    <section class="section-wrap features-section" id="how-it-works">
+      <div class="section-heading">
+        <p class="eyebrow">HOW MALIBUDGET HELPS</p>
+        <h2>Small steps can make money feel more manageable.</h2>
+        <p>Bring your everyday money decisions into one simple place.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon"><i data-lucide="calculator"></i></div>
+          <h3>Plan your budget</h3>
+          <p>Enter your income, bills and savings plans to see what remains for the weeks ahead.</p>
         </article>
-
-        <article class="stat-card">
-          <span class="stat-icon"><i data-lucide="receipt" class="site-icon" aria-hidden="true"></i></span>
-          <p class="muted">Bills</p>
-          <h3 id="dashboard-bills">R0.00</h3>
-          <span class="stat-foot">Planned essentials</span>
+        <article class="feature-card">
+          <div class="feature-icon"><i data-lucide="shopping-basket"></i></div>
+          <h3>Plan your groceries</h3>
+          <p>Build a shopping list and keep the estimated cost in view before you shop.</p>
         </article>
-
-        <article class="stat-card">
-          <span class="stat-icon"><i data-lucide="shopping-cart" class="site-icon" aria-hidden="true"></i></span>
-          <p class="muted">Groceries</p>
-          <h3 id="dashboard-groceries">R0.00</h3>
-          <span class="stat-foot">Planned grocery budget</span>
-        </article>
-
-        <article class="stat-card highlight-card">
-          <span class="stat-icon"><i data-lucide="leaf" class="site-icon" aria-hidden="true"></i></span>
-          <p class="muted">Left to plan</p>
-          <h3 id="dashboard-remaining">R0.00</h3>
-          <span class="stat-foot">After planned costs and savings</span>
+        <article class="feature-card">
+          <div class="feature-icon"><i data-lucide="receipt-text"></i></div>
+          <h3>Track expenses</h3>
+          <p>Record everyday spending so you can understand where your money is going.</p>
         </article>
       </div>
     </section>
 
-    <section class="content-grid">
-      <article class="panel">
-        <div class="section-title">
-          <div>
-            <h2>Spending overview</h2>
-            <p class="muted">Your recorded expenses compared with income.</p>
-          </div>
+    <section class="about-section" id="about">
+      <div class="section-wrap about-grid">
+        <div class="about-image-wrap">
+          <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=1100&q=85" alt="Person using a bank card while making a payment">
+          <div class="image-caption"><i data-lucide="heart-handshake"></i><span>Made for everyday money decisions</span></div>
         </div>
-
-        <div class="progress-track">
-          <div class="progress-fill" id="spending-progress-fill"></div>
+        <div class="about-copy">
+          <p class="eyebrow">ABOUT MALIBUDGET</p>
+          <h2>Budgeting should help you feel more prepared — not judged.</h2>
+          <p>MaliBudget is a household budgeting website designed around the real costs people plan for every day: groceries, electricity, transport, school needs, bills and unexpected expenses.</p>
+          <p>The goal is not to tell people what they should spend. It is to help people understand their available money and make a plan that works for their situation.</p>
+          <ul class="check-list">
+            <li><i data-lucide="check"></i> Simple, practical money planning</li>
+            <li><i data-lucide="check"></i> A clearer view of bills and spending</li>
+            <li><i data-lucide="check"></i> Designed with everyday households in mind</li>
+          </ul>
+          <a class="text-link" href="login.html">Explore your budget planner <i data-lucide="arrow-right"></i></a>
         </div>
-
-        <div class="progress-labels">
-          <span id="overview-spent">R0.00 spent</span>
-          <span id="overview-percent">0%</span>
-        </div>
-
-        <p class="muted small" id="overview-message">
-          Create a budget to get started.
-        </p>
-      </article>
-
-      <article class="panel">
-        <h2>Quick actions</h2>
-        <p class="muted">What would you like to do today?</p>
-
-        <a class="action-link" href="budget.html">
-          <i data-lucide="wallet" class="site-icon" aria-hidden="true"></i>
-          <span>
-            <strong>Plan my budget</strong>
-            <small>Calculate weekly spending money</small>
-          </span>
-          <i data-lucide="arrow-right" class="site-icon action-arrow" aria-hidden="true"></i>
-        </a>
-
-        <a class="action-link" href="groceries.html">
-          <i data-lucide="shopping-cart" class="site-icon" aria-hidden="true"></i>
-          <span>
-            <strong>Build a grocery list</strong>
-            <small>Estimate your shopping total</small>
-          </span>
-          <i data-lucide="arrow-right" class="site-icon action-arrow" aria-hidden="true"></i>
-        </a>
-
-        <a class="action-link" href="expenses.html">
-          <i data-lucide="receipt" class="site-icon" aria-hidden="true"></i>
-          <span>
-            <strong>Record an expense</strong>
-            <small>Keep track of what you spend</small>
-          </span>
-          <i data-lucide="arrow-right" class="site-icon action-arrow" aria-hidden="true"></i>
-        </a>
-      </article>
+      </div>
     </section>
 
-    <footer class="footer">
-      MaliBudget · Simple planning for everyday life.
-    </footer>
+    <section class="section-wrap feedback-section" id="feedback">
+      <div class="feedback-intro">
+        <p class="eyebrow">YOUR VOICE MATTERS</p>
+        <h2>Help us make MaliBudget better.</h2>
+        <p>What would make managing your money easier? Share an idea, tell us what works, or suggest a feature you would like to see.</p>
+        <div class="feedback-note"><i data-lucide="message-circle"></i><span>Your feedback helps guide future improvements.</span></div>
+      </div>
+      <form class="feedback-form" id="feedback-form">
+        <label for="feedback-name">Name <span>(optional)</span></label>
+        <input id="feedback-name" name="name" type="text" maxlength="80" placeholder="How should we address you?">
+
+        <label for="feedback-type">Feedback type</label>
+        <select id="feedback-type" name="type" required>
+          <option value="">Choose one</option>
+          <option value="Suggestion">Suggestion</option>
+          <option value="Feature request">Feature request</option>
+          <option value="Problem report">Problem report</option>
+          <option value="General feedback">General feedback</option>
+        </select>
+
+        <label for="feedback-message">Your feedback</label>
+        <textarea id="feedback-message" name="message" rows="5" minlength="5" maxlength="1500" required placeholder="Tell us what you think..."></textarea>
+        <button class="button button-primary submit-button" type="submit">Send feedback <i data-lucide="send"></i></button>
+        <p class="form-status" id="feedback-status" role="status" aria-live="polite"></p>
+        <p class="privacy-note"><i data-lucide="lock-keyhole"></i> Please do not include passwords, bank details or other sensitive information.</p>
+      </form>
+    </section>
   </main>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
-  </script>
+  <footer class="site-footer">
+    <div class="section-wrap footer-inner">
+      <a class="brand footer-brand" href="landing.html"><i data-lucide="sprout" class="brand-icon"></i><span>MaliBudget</span></a>
+      <p>Every rand deserves a plan.</p>
+      <div class="footer-links"><a href="#about">About</a><a href="#feedback">Feedback</a><a href="login.html">Log in</a></div>
+      <small>© <span id="year"></span> MaliBudget. Built for clearer everyday budgeting.</small>
+    </div>
+  </footer>
 
-  <script type="module">
-    import { auth } from "./firebase.js";
-    import { onAuthStateChanged, signOut } from
-      "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
-
-    const logoutButton = document.getElementById("logout-button");
-
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        window.location.replace("login.html");
-      }
-    });
-
-    logoutButton.addEventListener("click", async () => {
-      logoutButton.disabled = true;
-      logoutButton.textContent = "Signing out...";
-
-      try {
-        await signOut(auth);
-        window.location.replace("login.html");
-      } catch (error) {
-        console.error("Could not sign out:", error);
-        logoutButton.disabled = false;
-        logoutButton.textContent = "Log out";
-        alert("Could not log out. Please try again.");
-      }
-    });
-  </script>
-
-  <script type="module">
-    import { auth, db } from "./firebase.js";
-    import { onAuthStateChanged } from
-      "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
-    import {
-      doc,
-      setDoc,
-      serverTimestamp
-    } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
-
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) return;
-
-      try {
-        await setDoc(
-          doc(db, "users", user.uid, "tests", "connection"),
-          {
-            message: "MaliBudget Firestore connection successful",
-            createdAt: serverTimestamp()
-          }
-        );
-        console.log("Firestore write test successful!");
-      } catch (error) {
-        console.error("Firestore write test failed:", error);
-      }
-    });
-  </script>
+  <script type="module" src="landing.js"></script>
+  <script>lucide.createIcons();</script>
 </body>
 </html>
