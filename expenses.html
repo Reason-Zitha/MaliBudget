@@ -8,17 +8,39 @@
   <link rel="stylesheet" href="style.css">
   <script type="module" src="script.js"></script>
 </head>
-<body>v
+
+<body>
   <aside class="sidebar">
-    <a class="brand" href="index.html"><span>🌱</span> MaliBudget</a>
+    <a class="brand" href="index.html">
+      <i data-lucide="sprout" class="brand-icon" aria-hidden="true"></i>
+      MaliBudget
+    </a>
+
     <p class="nav-label">MENU</p>
     <nav>
-      <a class="nav-link" href="index.html">▦ <span>Overview</span></a>
-      <a class="nav-link" href="budget.html">◷ <span>Budget planner</span></a>
-      <a class="nav-link" href="groceries.html">🛒 <span>Groceries</span></a>
-      <a class="nav-link active" href="expenses.html">🧾 <span>Expenses</span></a>
+      <a class="nav-link" href="index.html">
+        <i data-lucide="layout-dashboard" class="site-icon" aria-hidden="true"></i>
+        <span>Overview</span>
+      </a>
+      <a class="nav-link" href="budget.html">
+        <i data-lucide="wallet" class="site-icon" aria-hidden="true"></i>
+        <span>Budget planner</span>
+      </a>
+      <a class="nav-link" href="groceries.html">
+        <i data-lucide="shopping-cart" class="site-icon" aria-hidden="true"></i>
+        <span>Groceries</span>
+      </a>
+      <a class="nav-link active" href="expenses.html">
+        <i data-lucide="receipt" class="site-icon" aria-hidden="true"></i>
+        <span>Expenses</span>
+      </a>
     </nav>
-    <div class="sidebar-note"><span>💚</span><strong>Stay in control.</strong><p>Small expenses count too.</p></div>
+
+    <div class="sidebar-note">
+      <i data-lucide="heart-handshake" class="site-icon" aria-hidden="true"></i>
+      <strong>Stay in control.</strong>
+      <p>Small expenses count too.</p>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -28,11 +50,16 @@
         <h1>Expense tracker</h1>
         <p class="muted">Record what you actually spend.</p>
       </div>
-      <button class="button secondary" id="export-button" type="button">Export CSV</button>
+      <button class="button secondary" id="export-button" type="button">
+        <i data-lucide="download" class="button-icon" aria-hidden="true"></i>
+        Export CSV
+      </button>
     </header>
 
     <section class="page-intro">
-      <span class="intro-icon">🧾</span>
+      <span class="intro-icon">
+        <i data-lucide="receipt" class="site-icon" aria-hidden="true"></i>
+      </span>
       <div>
         <h2>Where did your money go?</h2>
         <p>Record each expense to keep your spending overview up to date.</p>
@@ -44,8 +71,10 @@
         <div class="form-grid">
           <div class="form-field">
             <label for="expense-description">Expense description</label>
-            <input id="expense-description" type="text" maxlength="120" placeholder="e.g. Taxi fare" required>
+            <input id="expense-description" type="text" maxlength="120"
+                   placeholder="e.g. Taxi fare" required>
           </div>
+
           <div class="form-field">
             <label for="expense-category">Category</label>
             <select id="expense-category" required>
@@ -57,13 +86,16 @@
               <option value="Other">Other</option>
             </select>
           </div>
+
           <div class="form-field">
             <label for="expense-amount">Amount (R)</label>
-            <input id="expense-amount" type="number" min="0.01" step="0.01" placeholder="e.g. 35" required>
+            <input id="expense-amount" type="number" min="0.01" step="0.01"
+                   placeholder="e.g. 35" required>
           </div>
         </div>
+
         <p id="expense-error" class="form-error" role="alert" hidden></p>
-        <button class="button primary" type="submit">+ Add expense</button>
+        <button class="button primary" type="submit">Add expense</button>
       </form>
     </section>
 
@@ -78,12 +110,20 @@
           <strong id="expenses-total">R0.00</strong>
         </div>
       </div>
+
       <div id="expense-list" class="item-list">
-        <p class="empty-message">No expenses yet. Add your first expense above.</p>
+        <p class="empty-message">
+          No expenses yet. Add your first expense above.
+        </p>
       </div>
     </section>
 
-    <footer class="footer">MaliBudget · Every rand deserves a plan.</footer>
+    <footer class="footer">
+      MaliBudget · Every rand deserves a plan.
+    </footer>
   </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
 </body>
 </html>

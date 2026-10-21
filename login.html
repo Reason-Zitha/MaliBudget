@@ -36,6 +36,10 @@
     .auth-brand h1 {
       color: #087b50;
       margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
     }
 
     .auth-brand p {
@@ -127,7 +131,11 @@
   <main class="auth-page">
     <section class="auth-card">
       <div class="auth-brand">
-        <h1>🌱 MaliBudget</h1>
+        <h1>
+          <i data-lucide="sprout" class="brand-icon"
+             aria-hidden="true"></i>
+          MaliBudget
+        </h1>
         <p>Make your money last until payday.</p>
       </div>
 
@@ -145,20 +153,12 @@
         <p>Sign in to access your budget.</p>
 
         <label for="login-email">Email address</label>
-        <input
-          type="email"
-          id="login-email"
-          autocomplete="email"
-          required
-        >
+        <input type="email" id="login-email"
+               autocomplete="email" required>
 
         <label for="login-password">Password</label>
-        <input
-          type="password"
-          id="login-password"
-          autocomplete="current-password"
-          required
-        >
+        <input type="password" id="login-password"
+               autocomplete="current-password" required>
 
         <button type="submit" class="auth-submit">
           Sign in
@@ -170,36 +170,24 @@
         <p>Start managing your money with confidence.</p>
 
         <label for="register-name">Your name</label>
-        <input
-          type="text"
-          id="register-name"
-          autocomplete="name"
-          required
-        >
+        <input type="text" id="register-name"
+               autocomplete="name" required>
 
         <label for="register-email">Email address</label>
-        <input
-          type="email"
-          id="register-email"
-          autocomplete="email"
-          required
-        >
+        <input type="email" id="register-email"
+               autocomplete="email" required>
 
         <label for="register-password">Create a password</label>
-        <input
-          type="password"
-          id="register-password"
-          autocomplete="new-password"
-          minlength="6"
-          required
-        >
+        <input type="password" id="register-password"
+               autocomplete="new-password" minlength="6" required>
 
         <button type="submit" class="auth-submit">
           Create account
         </button>
       </form>
 
-      <p id="auth-message" class="auth-message" role="status" aria-live="polite"></p>
+      <p id="auth-message" class="auth-message"
+         role="status" aria-live="polite"></p>
 
       <a class="auth-back" href="index.html">
         Back to MaliBudget overview
@@ -207,138 +195,127 @@
     </section>
   </main>
 
- 
-<script type="module">
-  import { initializeApp } from
-    "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
 
-  import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    updateProfile
-  } from
-    "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
+  <script type="module">
+    import { initializeApp, getApps, getApp } from
+      "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyAfbeoUjxIe2jJLf89BwPmdJVfqD2jh_QI",
-    authDomain: "malibudget.firebaseapp.com",
-    projectId: "malibudget",
-    storageBucket: "malibudget.firebasestorage.app",
-    messagingSenderId: "828431083173",
-    appId: "1:828431083173:web:4dd6ed306e80b1b4560f4c",
-    measurementId: "G-RW6FQ8VDGX"
-  };
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      updateProfile
+    } from
+      "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  // Get the HTML elements
-  const loginForm = document.getElementById("login-form");
-  const registerForm = document.getElementById("register-form");
-  const showLogin = document.getElementById("show-login");
-  const showRegister = document.getElementById("show-register");
-  const authMessage = document.getElementById("auth-message");
-
-  // Switch to the Sign in form
-  showLogin.addEventListener("click", () => {
-    loginForm.hidden = false;
-    registerForm.hidden = true;
-
-    showLogin.classList.add("active");
-    showRegister.classList.remove("active");
-
-    authMessage.textContent = "";
-  });
-
-  // Switch to the Create account form
-  showRegister.addEventListener("click", () => {
-    loginForm.hidden = true;
-    registerForm.hidden = false;
-
-    showRegister.classList.add("active");
-    showLogin.classList.remove("active");
-
-    authMessage.textContent = "";
-  });
-
-  // Register a new user
-  registerForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const name = document.getElementById("register-name").value.trim();
-    const email = document.getElementById("register-email").value.trim();
-    const password = document.getElementById("register-password").value;
-
-    if (!name) {
-      authMessage.textContent = "Please enter your name.";
-      return;
-    }
-
-    authMessage.textContent = "Creating your account...";
-
-    try {
-      const result = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      await updateProfile(result.user, {
-        displayName: name
-      });
-
-      authMessage.textContent = "Account created successfully!";
-      window.location.href = "index.html";
-    } catch (error) {
-      console.error("Registration error:", error);
-      authMessage.textContent = getFriendlyError(error.code);
-    }
-  });
-
-  // Sign in an existing user
-  loginForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const email = document.getElementById("login-email").value.trim();
-    const password = document.getElementById("login-password").value;
-
-    authMessage.textContent = "Signing in...";
-
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-
-      authMessage.textContent = "Login successful!";
-      window.location.href = "index.html";
-    } catch (error) {
-      console.error("Login error:", error);
-      authMessage.textContent = getFriendlyError(error.code);
-    }
-  });
-
-  // Display understandable error messages
-  function getFriendlyError(code) {
-    const messages = {
-      "auth/email-already-in-use":
-        "This email already has an account. Please sign in.",
-      "auth/invalid-email":
-        "Please enter a valid email address.",
-      "auth/weak-password":
-        "Your password is too weak. Please choose a stronger one.",
-      "auth/invalid-credential":
-        "Email or password is incorrect. Please try again.",
-      "auth/network-request-failed":
-        "Network problem. Check your internet connection.",
-      "auth/too-many-requests":
-        "Too many attempts. Please wait and try again.",
-      "auth/operation-not-allowed":
-        "Email and password sign-in is not enabled in Firebase."
+    const firebaseConfig = {
+      apiKey: "AIzaSyAfbeoUjxIe2jJLf89BwPmdJVfqD2jh_QI",
+      authDomain: "malibudget.firebaseapp.com",
+      projectId: "malibudget",
+      storageBucket: "malibudget.firebasestorage.app",
+      messagingSenderId: "828431083173",
+      appId: "1:828431083173:web:4dd6ed306e80b1b4560f4c",
+      measurementId: "G-RW6FQ8VDGX"
     };
 
-    return messages[code] ||
-      "Something went wrong. Press F12 and check the Console for details.";
-  }
-</script>
+    const app = getApps().length
+      ? getApp()
+      : initializeApp(firebaseConfig);
 
+    const auth = getAuth(app);
+
+    const loginForm = document.getElementById("login-form");
+    const registerForm = document.getElementById("register-form");
+    const showLogin = document.getElementById("show-login");
+    const showRegister = document.getElementById("show-register");
+    const authMessage = document.getElementById("auth-message");
+
+    showLogin.addEventListener("click", () => {
+      loginForm.hidden = false;
+      registerForm.hidden = true;
+      showLogin.classList.add("active");
+      showRegister.classList.remove("active");
+      authMessage.textContent = "";
+    });
+
+    showRegister.addEventListener("click", () => {
+      loginForm.hidden = true;
+      registerForm.hidden = false;
+      showRegister.classList.add("active");
+      showLogin.classList.remove("active");
+      authMessage.textContent = "";
+    });
+
+    registerForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById("register-name").value.trim();
+      const email = document.getElementById("register-email").value.trim();
+      const password = document.getElementById("register-password").value;
+
+      if (!name) {
+        authMessage.textContent = "Please enter your name.";
+        return;
+      }
+
+      authMessage.textContent = "Creating your account...";
+
+      try {
+        const result = await createUserWithEmailAndPassword(
+          auth, email, password
+        );
+
+        await updateProfile(result.user, { displayName: name });
+
+        window.location.href = "index.html";
+      } catch (error) {
+        console.error("Registration error:", error);
+        authMessage.textContent = getFriendlyError(error.code);
+      }
+    });
+
+    loginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const email = document.getElementById("login-email").value.trim();
+      const password = document.getElementById("login-password").value;
+
+      authMessage.textContent = "Signing in...";
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        window.location.href = "index.html";
+      } catch (error) {
+        console.error("Login error:", error);
+        authMessage.textContent = getFriendlyError(error.code);
+      }
+    });
+
+    function getFriendlyError(code) {
+      const messages = {
+        "auth/email-already-in-use":
+          "This email already has an account. Please sign in.",
+        "auth/invalid-email":
+          "Please enter a valid email address.",
+        "auth/weak-password":
+          "Your password is too weak. Please choose a stronger one.",
+        "auth/invalid-credential":
+          "Email or password is incorrect. Please try again.",
+        "auth/network-request-failed":
+          "Network problem. Check your internet connection.",
+        "auth/too-many-requests":
+          "Too many attempts. Please wait and try again.",
+        "auth/operation-not-allowed":
+          "Email and password sign-in is not enabled in Firebase."
+      };
+
+      return messages[code] ||
+        "Something went wrong. Check the browser Console for details.";
+    }
+  </script>
 </body>
 </html>

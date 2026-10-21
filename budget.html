@@ -6,19 +6,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MaliBudget | Budget Planner</title>
   <link rel="stylesheet" href="style.css">
- <script type="module" src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </head>
+
 <body>
   <aside class="sidebar">
-    <a class="brand" href="index.html"><span>🌱</span> MaliBudget</a>
+    <a class="brand" href="index.html">
+      <i data-lucide="sprout" class="brand-icon" aria-hidden="true"></i>
+      MaliBudget
+    </a>
+
     <p class="nav-label">MENU</p>
     <nav>
-      <a class="nav-link" href="index.html">▦ <span>Overview</span></a>
-      <a class="nav-link active" href="budget.html">◷ <span>Budget planner</span></a>
-      <a class="nav-link" href="groceries.html">🛒 <span>Groceries</span></a>
-      <a class="nav-link" href="expenses.html">🧾 <span>Expenses</span></a>
+      <a class="nav-link" href="index.html">
+        <i data-lucide="layout-dashboard" class="site-icon" aria-hidden="true"></i>
+        <span>Overview</span>
+      </a>
+      <a class="nav-link active" href="budget.html">
+        <i data-lucide="wallet" class="site-icon" aria-hidden="true"></i>
+        <span>Budget planner</span>
+      </a>
+      <a class="nav-link" href="groceries.html">
+        <i data-lucide="shopping-cart" class="site-icon" aria-hidden="true"></i>
+        <span>Groceries</span>
+      </a>
+      <a class="nav-link" href="expenses.html">
+        <i data-lucide="receipt" class="site-icon" aria-hidden="true"></i>
+        <span>Expenses</span>
+      </a>
     </nav>
-    <div class="sidebar-note"><span>💚</span><strong>Small steps matter.</strong><p>Every rand deserves a plan.</p></div>
+
+    <div class="sidebar-note">
+      <i data-lucide="heart-handshake" class="site-icon" aria-hidden="true"></i>
+      <strong>Small steps matter.</strong>
+      <p>Every rand deserves a plan.</p>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -31,7 +53,9 @@
     </header>
 
     <section class="page-intro">
-      <span class="intro-icon">📊</span>
+      <span class="intro-icon">
+        <i data-lucide="chart-column" class="site-icon" aria-hidden="true"></i>
+      </span>
       <div>
         <h2>Your household budget</h2>
         <p>Use amounts from the same period, such as one month.</p>
@@ -45,27 +69,32 @@
 
         <div class="form-field">
           <label for="income">Total income (R)</label>
-          <input type="number" id="income" min="0" step="0.01" placeholder="e.g. 8000" required>
+          <input type="number" id="income" min="0" step="0.01"
+                 placeholder="e.g. 8000" required>
         </div>
 
         <div class="form-field">
           <label for="bills">Bills and essentials (R)</label>
-          <input type="number" id="bills" min="0" step="0.01" placeholder="e.g. 2500" required>
+          <input type="number" id="bills" min="0" step="0.01"
+                 placeholder="e.g. 2500" required>
         </div>
 
         <div class="form-field">
           <label for="groceries-budget">Grocery budget (R)</label>
-          <input type="number" id="groceries-budget" min="0" step="0.01" placeholder="e.g. 1500" required>
+          <input type="number" id="groceries-budget" min="0" step="0.01"
+                 placeholder="e.g. 1500" required>
         </div>
 
         <div class="form-field">
           <label for="future">Savings and future needs (R)</label>
-          <input type="number" id="future" min="0" step="0.01" placeholder="e.g. 500" required>
+          <input type="number" id="future" min="0" step="0.01"
+                 placeholder="e.g. 500" required>
         </div>
 
         <div class="form-field">
           <label for="weeks">How many weeks must it last?</label>
-          <input type="number" id="weeks" min="1" max="52" step="1" placeholder="e.g. 4" required>
+          <input type="number" id="weeks" min="1" max="52" step="1"
+                 placeholder="e.g. 4" required>
         </div>
 
         <p id="planner-error" class="form-error" role="alert" hidden></p>
@@ -77,22 +106,43 @@
       </form>
 
       <aside class="panel result-panel">
-        <span class="result-icon">🌿</span>
+        <span class="result-icon">
+          <i data-lucide="sprout" class="site-icon" aria-hidden="true"></i>
+        </span>
         <p class="eyebrow">YOUR RESULTS</p>
         <h2>Money left to plan</h2>
         <p class="big-result" id="result-remaining">R0.00</p>
-        <p class="muted" id="result-summary">Complete the form and calculate your budget.</p>
+        <p class="muted" id="result-summary">
+          Complete the form and calculate your budget.
+        </p>
 
-        <div class="result-line"><span>Income</span><strong id="result-income">R0.00</strong></div>
-        <div class="result-line"><span>Planned costs and savings</span><strong id="result-allocated">R0.00</strong></div>
-        <div class="result-line"><span>Weekly amount</span><strong id="result-weekly">R0.00</strong></div>
-        <div class="result-line"><span>Daily guide</span><strong id="result-daily">R0.00</strong></div>
+        <div class="result-line">
+          <span>Income</span>
+          <strong id="result-income">R0.00</strong>
+        </div>
+        <div class="result-line">
+          <span>Planned costs and savings</span>
+          <strong id="result-allocated">R0.00</strong>
+        </div>
+        <div class="result-line">
+          <span>Weekly amount</span>
+          <strong id="result-weekly">R0.00</strong>
+        </div>
+        <div class="result-line">
+          <span>Daily guide</span>
+          <strong id="result-daily">R0.00</strong>
+        </div>
 
-        <p class="small muted">Your weekly and daily amounts are estimates. Remember to allow for unexpected costs.</p>
+        <p class="small muted">
+          Your weekly and daily amounts are estimates. Remember to allow for unexpected costs.
+        </p>
       </aside>
     </section>
 
     <footer class="footer">MaliBudget · Your money, your plan.</footer>
   </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
 </body>
 </html>
