@@ -1,0 +1,22 @@
+// Add this match block INSIDE your existing
+// match /databases/{database}/documents { ... }
+// Do not replace your existing per-user rules.
+match /feedback/{feedbackId} {
+  // Anyone can submit feedback. No public reads or edits.
+  allow create: if
+    request.resource.data.keys().hasOnly(['name', 'type', 'message', 'createdAt']) &&
+    request.resource.data.name is string &&
+    request.resource.data.name.size() <= 80 &&
+    request.resource.data.type in [
+      'Suggestion',
+      'Feature request',
+      'Problem report',
+      'General feedback'
+    ] &&
+    request.resource.data.message is string &&
+    request.resource.data.message.size() >= 5 &&
+    request.resource.data.message.size() <= 1500 &&
+    request.resource.data.createdAt == request.time;
+
+  allow read, update, delete: if false;
+}
